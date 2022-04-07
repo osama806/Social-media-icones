@@ -1,0 +1,92 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bg: #222;
+}
+
+body {
+    /*بتحط العناصر يلي موجودة جوا الاب قدام بعضهن بدل ما يكونو تحت بعض flex */
+    display: flex;
+    /*بتوزع المساحات الفاضية بالتساوي وبتاخد كذا قيمة*/
+    justify-content: center;
+    /*بتعمل محاذاة للعناصر عالجهة اللي بدي */
+    align-items: center;
+    /*اقل شي الطول 100*/
+    /*vh يعني غطي الشاشة كلها */
+    min-height: 100vh;
+    background-color: var(--bg);
+}
+
+ul {
+    position: relative;
+    display: flex;
+    /*المسافات بين العناصر من جهة الاسطر والاعمدة */
+    gap: 50px;
+}
+
+ul li {
+    position: relative;
+    list-style: none;
+    width: 80px;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+ul li a {
+    position: relative;
+    text-decoration: none;
+    color: var(--clr);
+    transition: 0.5s;
+    z-index: 10;
+    font-size: 2em;
+}
+
+ul li:hover a {
+    font-size: 3em;
+    filter: drop-shadow(0 0 20px var(--clr)) drop-shadow(0 0 40px var(--clr)) drop-shadow(0 0 60px var(--clr));
+}
+
+ul li:hover {
+    z-index: 10000;
+    transform: scale(0.75);
+}
+
+ul li::before {
+    content: '';
+    position: absolute;
+    inset: 30px;
+    box-shadow: 0 0 0 10px var(--clr), 0 0 0 20px var(--bg), 0 0 0 22px var(--clr);
+    transition: 0.5s;
+}
+
+ul li::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--bg);
+    transform: rotate(45deg);
+}
+
+ul li:hover::before {
+    inset: 0;
+}
+
+
+/*
+عناصر flex-box يلي بستعملهن للابناء
+1- grow بكبر العنصر حتى تمتلي مساحة السطر 
+2- order 
+3- shrink بتصغر العنصر قد ما بدي 
+4- align-self بيعمل العنصر محاذاة لنفسه 
+ /*بتشوف اذا المساحة ما ح تأدي بنزل العنصر عالسطر التاني 
+ flex-wrap: wrap;
+ /*align content ما بتخلي مساحات فاضية بين العناصر 
+*/
